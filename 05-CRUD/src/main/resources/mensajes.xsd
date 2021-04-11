@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://tell.me/mensajes" 
+    xmlns:tns="http://tell.me/mensajes" elementFormDefault="qualified">
+
+    <element name="CreateRequest">
+        <complexType>
+            <sequence>
+                <element name="nombre" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="CreateResponse">
+        <complexType>
+            <sequence>
+                <element name="respuesta" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="ReadAllRequest">
+        <complexType>
+        </complexType>
+    </element>
+
+    <element name="ReadAllResponse">
+        <complexType>
+            <sequence>
+                <element name="saludador" maxOccurs="unbounded">
+                <complexType> 
+                    <sequence>
+                    <element name="id" type="int"></element>
+                    <element name="nombre" type="string"></element>
+                    </sequence>
+                </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="ReadRequest">
+        <complexType>
+            <sequence>
+                <element name="id" type="int"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="ReadResponse">
+        <complexType>
+            <sequence>
+                <element name="id" type="int"></element>
+                <element name="nombre" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="UpdateRequest">
+        <complexType>
+            <sequence>
+                <element name="id" type="int"></element>
+                <element name="nombre" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="UpdateResponse">
+        <complexType>
+            <sequence>
+                <element name="respuesta" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="DeleteRequest">
+        <complexType>
+            <sequence>
+                <element name="id" type="int"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="DeleteResponse">
+        <complexType>
+            <sequence>
+                <element name="respuesta" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.example.org/cine" 
+    xmlns:tns="http://www.example.org/cine" elementFormDefault="qualified">
+
+    <element name="PeliculaRequest">
+        <complexType>
+            <sequence>
+                <element name="a" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="PeliculaResponse">
+        <complexType>
+            <sequence>
+                <element name="idPelicula" type="string"></element>
+                <element name="nombreP" type="string"></element>
+                <element name="lugaresD" type="string"></element>
+                <element name="lugaresO" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="ReservacionRequest">
+        <complexType>
+            <sequence>
+                <element name="usuario" type="string"></element>
+                <element name="sala" type="string"></element>
+                <element name="lugaresR" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="ReservacionResponse">
+        <complexType>
+            <sequence>
+                <element name="ReservacionID" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+</schema>
