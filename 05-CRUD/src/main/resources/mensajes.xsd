@@ -88,4 +88,21 @@
             </sequence>
         </complexType>
     </element>
+
+        <element name="ReadByNombreRequest">
+        <complexType>
+            <sequence>
+                <element name="nombre" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="ReadByNombreResponse">
+        <complexType>
+            <sequence>
+                <element name="id" type="int"></element>
+                <element name="nombre" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
 </schema>

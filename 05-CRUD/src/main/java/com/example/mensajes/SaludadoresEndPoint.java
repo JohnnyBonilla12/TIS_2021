@@ -14,6 +14,8 @@ import me.tell.mensajes.DeleteRequest;
 import me.tell.mensajes.DeleteResponse;
 import me.tell.mensajes.ReadAllRequest;
 import me.tell.mensajes.ReadAllResponse;
+import me.tell.mensajes.ReadByNombreRequest;
+import me.tell.mensajes.ReadByNombreResponse;
 import me.tell.mensajes.ReadRequest;
 import me.tell.mensajes.ReadResponse;
 import me.tell.mensajes.UpdateRequest;
@@ -69,9 +71,13 @@ public class SaludadoresEndPoint {
         UpdateResponse respuesta = new UpdateResponse();
         Optional<Saludadores> local;
         local = isaludadores.findById(peticion.getId());
-        local.get().setNombre(peticion.getNombre());
-        isaludadores.save(local.get());
-        respuesta.setRespuesta("Usuario Modificado Correctamente " + local.get().toString().trim());
+        if(local.isPresent()){
+            local.get().setNombre(peticion.getNombre());
+            isaludadores.save(local.get());
+            respuesta.setRespuesta("Usuario Modificado Correctamente " + local.get().toString().trim());
+        }else{
+            respuesta.setRespuesta("ERROR: ID inexistente.");
+        }
         return respuesta;
     }
 
@@ -83,6 +89,17 @@ public class SaludadoresEndPoint {
         local = isaludadores.findById(peticion.getId());
         isaludadores.deleteById(peticion.getId());
         respuesta.setRespuesta("Usuario Borrado Correctamente " + local.get().toString().trim());
+        return respuesta;
+    }
+
+    @PayloadRoot(namespace = "http://tell.me/mensajes", localPart = "ReadByNombreRequest")
+    @ResponsePayload
+    public ReadByNombreResponse buscarXnombre(@RequestPayload ReadByNombreRequest peticion){
+        ReadByNombreResponse respuesta = new ReadByNombreResponse();
+        Saludadores local;
+        local = isaludadores.findByNombre(peticion.getNombre());
+        respuesta.setId(local.getId());
+        respuesta.setNombre(local.getNombre());
         return respuesta;
     }
 }
